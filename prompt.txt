@@ -1,0 +1,577 @@
+A 'task tree' stands as an ordered sequence of actions that a robot is required to
+carry out to achieve an intended outcome, providing a systematic breakdown of
+information. Each step enclosed within this task tree is depicted by what we
+classify as a 'functional unit'.
+A 'functional unit' is made up of three fundamental elements -
+● Input Nodes: These define the initial state of the objects involved in the
+action (e.g., whole potato vs. pre-sliced potato).
+● Output Nodes: These represent the anticipated state of the objects after the
+action (e.g., sliced potatoes).
+● Motion Node: This specifies the specific physical movement the robot
+needs to perform (e.g., grasp the potato).
+The following is an example of a task tree of 'slicing a whole onion':
+
+
+Here are the examples of task tree for instruction.
+
+Instruction: put the carrot on the cutting board
+Task tree:
+[
+{
+ "input_nodes": [
+ {
+ "label": "carrot",
+ "states": ["whole"],
+ "ingredients": [],
+ "container": null
+ },
+ {
+ "label": "cutting board",
+ "states": ["empty"],
+ "ingredients": [],
+ "container": null
+ }
+ ],
+ "motion_node": "pick-and-place",
+ "output_nodes": [
+ {
+ "label": "carrot",
+ "states": ["whole"],
+ "ingredients": [],
+ "container": "cutting board"
+ }
+ ]
+}
+]
+
+
+
+Instruction:- pour yogurt into blender.
+Task Tree:-     {
+        "input_nodes": [
+            {
+                "label": "blender",
+                "states": [
+                    "empty"
+                ],
+                "ingredients": [],
+                "container": null
+            },
+            {
+                "label": "yogurt",
+                "states": [
+                    "creamy"
+                ],
+                "ingredients": [],
+                "container": "bowl"
+            }
+        ],
+        "motion_node": "pour",
+        "output_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt"
+                ],
+                "container": null
+            }
+        ]
+    }
+
+
+Instruction:- Add strawberries to blender
+
+Task Tree:-
+    {
+        "input_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt"
+                ],
+                "container": null
+            },
+            {
+                "label": "strawberry",
+                "states": [
+                    "fresh",
+                    "sliced"
+                ],
+                "ingredients": [],
+                "container": "bowl"
+            }
+        ],
+        "motion_node": "pick-and-place",
+        "output_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry"
+                ],
+                "container": null
+            },
+            {
+                "label": "strawberry",
+                "states": [
+                    "fresh",
+                    "sliced"
+                ],
+                "ingredients": [],
+                "container": "blender"
+            },
+            {
+                "label": "yogurt",
+                "states": [
+                    "creamy"
+                ],
+                "ingredients": [],
+                "container": "blender"
+            }
+        ]
+    }
+
+
+Dish:- Smoothie
+Task Tree:-
+
+[
+    {
+        "input_nodes": [
+            {
+                "label": "blender",
+                "states": [
+                    "empty"
+                ],
+                "ingredients": [],
+                "container": null
+            },
+            {
+                "label": "yogurt",
+                "states": [
+                    "creamy"
+                ],
+                "ingredients": [],
+                "container": "bowl"
+            }
+        ],
+        "motion_node": "pour",
+        "output_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt"
+                ],
+                "container": null
+            }
+        ]
+    },
+    {
+        "input_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt"
+                ],
+                "container": null
+            },
+            {
+                "label": "strawberry",
+                "states": [
+                    "fresh",
+                    "sliced"
+                ],
+                "ingredients": [],
+                "container": "bowl"
+            }
+        ],
+        "motion_node": "pick-and-place",
+        "output_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry"
+                ],
+                "container": null
+            },
+            {
+                "label": "strawberry",
+                "states": [
+                    "fresh",
+                    "sliced"
+                ],
+                "ingredients": [],
+                "container": "blender"
+            },
+            {
+                "label": "yogurt",
+                "states": [
+                    "creamy"
+                ],
+                "ingredients": [],
+                "container": "blender"
+            }
+        ]
+    },
+    {
+        "input_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry"
+                ],
+                "container": null
+            },
+            {
+                "label": "pineapple",
+                "states": [
+                    "fresh",
+                    "sliced"
+                ],
+                "ingredients": [],
+                "container": "bowl"
+            }
+        ],
+        "motion_node": "pick-and-place",
+        "output_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple"
+                ],
+                "container": null
+            },
+            {
+                "label": "pineapple",
+                "states": [
+                    "fresh",
+                    "sliced"
+                ],
+                "ingredients": [],
+                "container": "blender"
+            }
+        ]
+    },
+    {
+        "input_nodes": [
+        {
+            "label": "blender",
+            "states": [],
+            "ingredients": [
+                "yogurt",
+                "strawberry",
+                "pineapple"
+            ],
+            "container": null
+        }
+        ],
+        "motion_node": "drain",
+        "output_nodes":[
+            {
+                "label": "blender",
+                "states": ["Removed excess juice"],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple"
+                ],
+                "container": null
+            }
+        ]
+    },
+    {
+        "input_nodes":[
+            {
+                "label": "banana",
+                "states": [
+                    "whole"
+                ],
+                "ingredients": [],
+                "container": "bowl"
+            },
+            {
+                "label": "knife",
+                "states": [],
+                "ingredients": [],
+                "container": null
+            }
+        ],
+        "motion_node":"peel and chop",
+        "output_nodes" :[
+            {
+                "label": "banana",
+                "states": [
+                    "sliced"
+                ],
+                "ingredients": [],
+                "container": "bowl"
+            }
+        ]
+    },
+    {
+        "input_nodes":[
+            {
+                "label": "banana",
+                "states": [
+                    "sliced"
+                ],
+                "ingredients": [],
+                "container": "bowl"
+            },
+            {
+                "label": "blender",
+                "states": ["Removed excess juice"],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple"
+                ],
+                "container": null
+            }
+        ],
+        "motion_node":"pick-and-place",
+        "output_nodes":[
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple",
+                    "banana"
+                ],
+                "container": null
+            },
+            {
+                "label": "banana",
+                "states": [
+                    "sliced"
+                ],
+                "ingredients": [],
+                "container": "blender"
+            }
+        ]
+    },
+    {
+        "input_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple",
+                    "banana"
+                ],
+                "container": null
+            },
+            {
+                "label": "liquid",
+                "states": [
+                    "extract"
+                ],
+                "ingredients": [],
+                "container": "",
+                "mass": 0
+            }
+        ],
+        "motion_node": "pour",
+        "output_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple",
+                    "banana",
+                    "liquid"
+                ],
+                "container": null
+            },
+            {
+                "label": "liquid",
+                "states": [
+                    "extract"
+                ],
+                "ingredients": [],
+                "container": "blender"
+            }
+        ]
+    },
+    {
+        "input_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple",
+                    "banana",
+                    "liquid"
+                ],
+                "container": null
+            },
+            {
+                "label": "ice",
+                "states": [
+                    "cubed"
+                ],
+                "ingredients": [],
+                "container": "bowl"
+            }
+        ],
+        "motion_node": "pick-and-place",
+        "output_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple",
+                    "banana",
+                    "liquid",
+                    "ice"
+                ],
+                "container": null
+            },
+            {
+                "label": "ice",
+                "states": [
+                    "cubed"
+                ],
+                "ingredients": [],
+                "container": "blender"
+            }
+        ]
+    },
+    {
+        "input_nodes": [
+            {
+                "label": "blender",
+                "states": [],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple",
+                    "banana",
+                    "liquid",
+                    "ice"
+                ],
+                "container": null
+            }
+        ],
+        "motion_node": "blend",
+        "output_nodes": [
+            {
+                "label": "smoothie",
+                "states": [
+                    "creamy"
+                ],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple",
+                    "banana",
+                    "liquid",
+                    "ice"
+                ],
+                "container": "blender"
+            }
+        ]
+    },
+    {
+        "input_nodes": [
+            {
+                "label": "smoothie",
+                "states": [
+                    "creamy"
+                ],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple",
+                    "banana",
+                    "liquid",
+                    "ice"
+                ],
+                "container": "blender"
+            },
+            {
+                "label": "glass",
+                "states": [
+                    "empty"
+                ],
+                "ingredients": [],
+                "container": null
+            }
+        ],
+        "motion_node": "pour",
+        "output_nodes": [
+            {
+                "label": "glass",
+                "states": [],
+                "ingredients": [
+                    "smoothie"
+                ],
+                "container": null
+            },
+            {
+                "label": "smoothie",
+                "states": [
+                    "creamy"
+                ],
+                "ingredients": [
+                    "yogurt",
+                    "strawberry",
+                    "pineapple",
+                    "banana",
+                    "liquid",
+                    "ice"
+                ],
+                "container": "glass"
+            }
+        ]
+    }
+]
+
+
+
+Steps to generate task tree:-
+
+Generate instructions to prepare dish.
+
+Based on the instructions generate task tree to prepare dish.
+
+
+When generating task tree consider the state of ingredient like if it's a whole and if needed to make pieces use cutting board. If state is not given consider it as whole.
+
+
+Please return JSON describing the task tree generated for given dish using the following schema:
+
+["input_nodes": list[foon], "motion_node":str, "output_nodes":list[foon]]
+
+foon = {"label": str, "states": list[str], "ingredients": list[str], "container": str}
+
+All fields are required.
+
+Important: Only return a single piece of valid JSON text.
+
+Make the dish using ingredients passed.
+
+Stricly give me only json response.
+

@@ -1,0 +1,41 @@
+{
+             "label":"skillet",
+             "states":[
+                "empty"
+             ],
+             "ingredients":[
+
+             ],
+             "container":"stove"
+          }
+
+
+
+objectNode = glm.Schema(
+    type = glm.Type.OBJECT,
+    properties = {
+        'label':  glm.Schema(type=glm.Type.STRING),
+        'states':  glm.Schema(type=glm.Type.ARRAY,items=glm.Schema(type=glm.Type.STRING)),
+        'ingredients': glm.Schema(type=glm.Type.ARRAY,items=glm.Schema(type=glm.Type.STRING)),
+        'container': glm.Schema(type=glm.Type.STRING)
+    },
+    required=['label', 'states', 'ingredients', 'container']
+)
+
+foon = glm.Schema(
+    type = glm.Type.OBJECT,
+    properties = {
+        'input_nodes':  glm.Schema(type=glm.Type.ARRAY,items=objectNode),
+        'motion_node':  glm.Schema(type=glm.Type.STRING),
+        'output_nodes': glm.Schema(type=glm.Type.ARRAY,items=objectNode)
+    },
+    required=['input_nodes', 'motion_node', 'output_nodes']
+)
+
+taskTree =  glm.Schema(
+    type = glm.Type.OBJECT,
+    properties = {
+        'task_tree':  glm.Schema(type=glm.Type.ARRAY,items=foon)
+    },
+    required=['task_tree']
+)

@@ -1,0 +1,193 @@
+[
+  {
+    "category": "home",
+    "menu" : [
+      {
+        "dish": "Linguine with Lemon-Garlic Shrimp",
+        "ingredients": [
+          "water","water","squash zucchini","shrimp","pasta","onion","green onion","lemon juice","garlic","water","parmesan cheese","vegetable oil blend","vegetable base","garlic","cornstarch","parsley","lemon zest","black pepper","salt","cayenne pepper","vegetable oil blend"
+        ]
+      },
+      {
+        "dish": "Vegan Sausage Mac Casserole",
+        "ingredients": [
+          "water","tomatoes","vegan sausage crumbles","onion","celery","pasta","carrots","green peas","tomato paste","red bell pepper","vegetable base","panko bread crumbs","vegetable oil blend","red wine vinegar","vegetable oil blend","garlic powder","salt","dried oregano","black pepper","dried oregano","dried basil","dried basil"
+        ]
+      },
+      {
+        "dish": "Steamed Broccoli Florets",
+        "ingredients": [
+         "broccoli","salt","black pepper","garlic powder"
+        ]
+      },
+      {
+        "dish": "Garlic Toast",
+        "ingredients": [
+          "vegetable oil blend","baguette bread","garlic","dried oregano","salt","black pepper"
+        ]
+      },
+      {
+        "dish": "Grilled Italian Vegetables",
+        "ingredients": [
+          "squash","squash zucchini","onion","red bell pepper","green pepper","vegetable oil blend","italian seasoning"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Grillhouse",
+    "menu" : [
+      {
+        "dish": "Grilled garlic-herb marinated chicken",
+        "ingredients": [
+          "chicken breast","roll","orange juice","vegetable oil blend","garlic","black pepper","dried thyme leaf","dried basil"
+        ]
+      },
+      {
+        "dish": "Mushroom & Swiss Burger",
+        "ingredients": [
+            "beef patty","hamburger roll","mushrooms","swiss cheese","lettuce","tomato","mayonnaise","vegetable oil blend","garlic concentrate","extra virgin olive oil","lemon juice","dijon mustard","rosemary","salt","salt","black pepper"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Truebalance",
+    "menu": [
+      {
+        "dish": "Spanish Rice",
+        "ingredients": [
+          "water","brown rice","tomatoes","onion","green pepper","vegetable base","vegetable oil blend","garlic","salt","cumin","dried oregano","dried sage","black pepper","paprika"
+        ]
+      },
+      {
+        "dish": "Vegetable Soup with Brown Rice",
+        "ingredients": [
+          "water","tomatoes","water","onion","green beans","celery","carrots","green cabbage","brown rice","corn kernals","vegetable base","canola oil","garlic","parsley","salt","black pepper","dried thyme leaf","dried bay leaf"
+        ]
+      },
+      {
+        "dish": "Chocolate Brownie",
+        "ingredients": [
+          "granulated sugar","rice flour","banana","canola oil","baking cocoa","salt","baking soda","cream of tartar"
+        ]
+      },
+      {
+        "dish": "Charro Beans",
+        "ingredients": [
+            "pinto beans","water","medium salsa","vegetable base","salt","cumin","black pepper"
+        ]
+      },
+      {
+        "dish": "Taco Seasoned Beef",
+        "ingredients": [
+            "ground beef", "water", "taco seasoning"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "slices",
+    "menu": [
+      {
+        "dish": "Classic Cheese Pizza",
+        "ingredients": [
+          "All Purpose Flour", "Mozzarella Cheese", "water", "pizza sauce", "vegetable oil blend", "salt", "granulated sugar", "yeast"
+        ]
+      },
+       {
+        "dish": "Pepperoni Pizza",
+        "ingredients": [
+          "All Purpose Flour", "Mozzarella Cheese", "water", "pizza sauce","deli pepperoni", "vegetable oil blend", "salt", "granulated sugar", "yeast"
+        ]
+      },
+       {
+        "dish": "BBQ Chicken Pizza",
+        "ingredients": [
+          "All Purpose Flour", "Mozzarella Cheese", "water", "pizza sauce","chicken breast","onion","barbecue sauce","tomatoes", "vegetable oil blend", "salt", "granulated sugar", "yeast", "black pepper", "garlic powder", "dried oregano", "extra virgin olive oil"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "delish",
+    "menu": [
+      {
+        "dish": "Grilled Ham and Cheese Sandwich",
+        "ingredients": [
+        "bread", "ham", "american cheese", "margarine", ""
+        ]
+      },
+      {
+        "dish": "Ranch Potato Chips",
+        "ingredients": [
+          "potatoes", "vegetable oil", "granulated sugar", "ranch dressing"
+        ]
+      },
+      {
+        "dish": "Tuna Salad Sandwich",
+        "ingredients": [
+        "tuna", "tomato", "multi grain wrap", "mayonnaise", "celery", "lettuce", "lemon juice", "black pepper"
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Cup Cakes",
+    "menu": [
+      {
+        "dish": "Sugar Cookie",
+        "ingredients": [
+          "enriched bleached flour", "sugar", "margarine", "eggs", "invert sugar", "salt", "baking soda", "degatted soy flour"
+        ]
+      },
+      {
+        "dish": "Chocolate Chip Cookie",
+        "ingredients": [
+          "enriched bleached flour", "sugar", "palm oil", "chocolate chips", "chocolate flavoured confectionary chips", "margarine", "water", "eggs", "dextrose", "wheat starch", "baking soda"
+        ]
+      },
+      {
+        "dish": "Strawberry-Mint Shortcake",
+        "ingredients": [
+          "enriched bleached flour", "strawberries", "water", "whipped topping", "granulated sugar", "lime juice", "mint"
+        ]
+      },
+      {
+        "dish": "Chocolate Chip Blondie",
+        "ingredients": [
+            "yellow cake","chocolate chips","egg blend","margarine","brown sugar","icing"
+        ]
+      }
+    ]
+  },
+    {
+    "category": "Hotspot",
+    "menu": [
+      {
+        "dish": "Vegetable Fried Rice",
+        "ingredients": [
+        "water", "white rice", "egg belnd", "snow peas", "onion", "vegetable oil blend", "green onion", "soy sauce", "gingerroot", "garlic", "salt", "black pepper"
+        ]
+      },
+      {
+        "dish": "Veggie Lo Mein",
+        "ingredients": [
+        "noodles", "green cabbage", "celery", "soy sauce", "teriyaki sauce", "sugar", "sherry wine", "sesame oil", "dried onions", "salt","carrot", "seasoned rice wine vinegar", "vegetable oil blend"
+        ]
+      },
+      {
+        "dish": "Asian Slaw",
+        "ingredients": [
+          "green cabbage","carrots","white vinegar","red bell pepper","gingerroot","green onion","cilantro","salt","garlic"
+        ]
+      },
+       {
+        "dish": "Pork Teriyaki",
+        "ingredients": [
+        "pork loin", "teriyaki sauce", "broccoli","green cabbage","onion","celery","carrots","vegetable oil blend"
+        ]
+      }
+    ]
+  }
+]
