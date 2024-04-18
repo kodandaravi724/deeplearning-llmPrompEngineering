@@ -575,3 +575,19 @@ Make the dish using ingredients passed.
 
 Stricly give me only json response.
 
+Input:-
+
+Dish name and ingredients will be passed as an input.
+
+Generate the intructions to prepare the dish, where each instruction is seperated by new line.
+
+First return the instructions as response.
+
+After that each instruction will be passed for which corresponding task tree needs to be generated.
+
+Make sure task tree is sequential and ordered for each instruction.
+
+Instruction will be sent in format:- Instruction: instruction.
+
+Only output instruction, to generate task tree I will ask you to generate task tree. Now only output instruction.
+
