@@ -32,6 +32,7 @@ def sendInstructions(data, prompt):
     for i in range(len(data)):
         k = data[i]['menu']
         for j in range(len(k)):
+            time.sleep(40)
             msg = ""
             dish_name = k[j]['dish']
             ingredients = k[j]['ingredients']
@@ -43,16 +44,17 @@ def sendInstructions(data, prompt):
             instructions = chat.send_message(prompt+"\n"+msg)
             instructions_list = instructions.text.split('\n')
             print(instructions.text)
-            chat.send_message("From now I will pas each instruction. Generate the task tree following the JSON format I specified. Strictly send task tree as response. No other information.")
+            chat.send_message("From now I will pas each instruction. Generate the task tree following the JSON format I specified. Strictly send task tree as json response. No other information.")
             counter = 0
             for instruction_index in range(len(instructions_list)):
                 if(counter%10==0): #call sleep on current thread to not make it a bottleneck for API calls.
-                    time.sleep(5)
+                    time.sleep(2)
                 if (len(instructions_list[instruction_index]) != 0):
                     if (instruction_index == len(instructions_list) - 1):
                         instruction = "lastInstruction: " + "dish: " + dish_name + " " + instructions_list[instruction_index]
                     else:
                         instruction = "Instruction: "+instructions_list[instruction_index]
+                    print(instruction+" <-- instruction")
                     response = chat.send_message(instruction)
                     counter+=1
                     print(response.text)

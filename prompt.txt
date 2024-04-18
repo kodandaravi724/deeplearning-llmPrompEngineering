@@ -9,8 +9,6 @@ action (e.g., whole potato vs. pre-sliced potato).
 action (e.g., sliced potatoes).
 ● Motion Node: This specifies the specific physical movement the robot
 needs to perform (e.g., grasp the potato).
-The following is an example of a task tree of 'slicing a whole onion':
-
 
 Here are the examples of task tree for instruction.
 
@@ -587,7 +585,16 @@ After that each instruction will be passed for which corresponding task tree nee
 
 Make sure task tree is sequential and ordered for each instruction.
 
+For last instruction, the label of output node should be name of dish.
+
 Instruction will be sent in format:- Instruction: instruction.
 
 Only output instruction, to generate task tree I will ask you to generate task tree. Now only output instruction.
 
+Give accurate name for motion_node. should be concise and simple.
+
+example values of motion_node are cook, heat, cut, slice, pour, pick-and-place, serve, boil, mix, grind and so on. motion node values are actions. Keep them to single work f possible.
+
+If state of vegetable is whole and if pieces are needed make sure to perform cut motion.
+
+If generate instructions prompt is sent then strictly give me only instructions as output each numbered in order. Don't send any other information. I need to parse instructions subsequently.
