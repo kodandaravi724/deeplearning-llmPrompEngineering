@@ -79,7 +79,7 @@ def sendInstructions(data, prompt):
                         pIndex = data1.index('{')
                         jsonData = ""
                         if(sIndex!=-1 and (sIndex<pIndex)):
-                            jsonData = data1[sIndex, data1.rfind(']')+1]
+                            jsonData = data1[sIndex: data1.rfind(']')+1]
                         else:
                             jsonData = data1[data1.index('{'): data1.rfind('}')+1]
                             tree.append(json.loads(jsonData))
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     prompt = read_file_as_string("prompt.txt")
     prompt = prompt + "\n"
     import json
-    f = open('input_hub.json')
+    f = open('inputhub.json')
     data = json.load(f)
     sendInstructions(data, prompt)
     # for i in range(len(data)):
