@@ -83,7 +83,11 @@ def sendInstructions(data, prompt):
                             jsonData = data1[sIndex: data1.rfind(']')+1]
                         else:
                             jsonData = data1[data1.index('{'): data1.rfind('}')+1]
-                        tree.append(json.loads(jsonData))
+                        print(type(json.loads(jsonData)))
+                        if isinstance(json.loads(jsonData), dict):
+                            tree.append(json.loads(jsonData))
+                        else:
+                            tree.extend(json.loads(jsonData))
                     except Exception as e:
                         print(e)
                         print(jsonData)
@@ -101,24 +105,4 @@ if __name__ == "__main__":
     f = open('inputhub.json')
     data = json.load(f)
     sendInstructions(data, prompt)
-    # for i in range(len(data)):
-    #     k = data[i]['menu']
-    #     for j in range(len(k)):
-    #         r = ""
-    #         t = prompt
-    #         model = genai.GenerativeModel(model_name='gemini-1.0-pro-latest')
-    #         dish_name = k[j]['dish']
-    #         ingredients = k[j]['ingredients']
-    #         r = r + f'Dish Name:- {dish_name}\n'
-    #         print(f'Dish Name:- {dish_name}\n')
-    #         r = r + f'Ingredients:- {ingredients}\n'
-    #         t = t+r
-    #         print(ingredients)
-    #         t += "First generate instructions to prepare dish and then prepare final task tree to prepare dish based on instructions."
-    #         k1 = dish_name.replace(' ', '_')
-    #         file_path = f'{k1}1.json'
-    #         response = model.generate_content(t)
-    #         print(response.text)
-
-
     f.close()

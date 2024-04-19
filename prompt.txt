@@ -561,9 +561,24 @@ When generating task tree consider the state of ingredient like if it's a whole 
 
 Please return JSON describing the task tree generated for given dish using the following schema:
 
-["input_nodes": list[foon], "motion_node":str, "output_nodes":list[foon]]
-
 foon = {"label": str, "states": list[str], "ingredients": list[str], "container": str}
+
+[
+  {
+  "input_nodes": list[foon], 
+  "motion_node":str, 
+  "output_nodes":list[foon]
+  },
+  {
+  "input_nodes": list[foon], 
+  "motion_node":str, 
+  "output_nodes":list[foon]
+  }
+]
+
+
+When there are multiple json objects in response return them in list as described above each json object separated by ,
+
 
 All fields are required.
 
@@ -596,5 +611,7 @@ Give accurate name for motion_node. should be concise and simple.
 example values of motion_node are cook, heat, cut, slice, pour, pick-and-place, serve, boil, mix, grind and so on. motion node values are actions. Keep them to single work f possible.
 
 If state of vegetable is whole and if pieces are needed make sure to perform cut motion.
+
+
 
 If generate instructions prompt is sent then strictly give me only instructions as output each numbered in order. Don't send any other information. I need to parse instructions subsequently.
