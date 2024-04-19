@@ -71,7 +71,8 @@ def sendInstructions(data, prompt):
                             print("exception retyring!!")
                             print(e)
                             retry_count+=1
-                            time.sleep(20)
+                            time.sleep(60)
+                            print(retry_count)
                     counter+=1
                     data1 = response.text
                     try:
@@ -82,7 +83,7 @@ def sendInstructions(data, prompt):
                             jsonData = data1[sIndex: data1.rfind(']')+1]
                         else:
                             jsonData = data1[data1.index('{'): data1.rfind('}')+1]
-                            tree.append(json.loads(jsonData))
+                        tree.append(json.loads(jsonData))
                     except Exception as e:
                         print(e)
                         print(jsonData)
@@ -90,7 +91,7 @@ def sendInstructions(data, prompt):
             file_path = f"{dish_name.replace(' ', '_')}.json"
 
             # Write JSON list to a JSON file
-            with open(file_path, "w") as json_file:
+            with open("tasktree/"+file_path, "w") as json_file:
                 json.dump(tree, json_file, indent=4)
 
 if __name__ == "__main__":
