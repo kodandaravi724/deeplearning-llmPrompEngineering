@@ -36,28 +36,62 @@ def sendInstructions(data, prompt):
             msg = ""
             dish_name = k[j]['dish']
             ingredients = k[j]['ingredients']
+            tree = []
             msg = msg + f'Dish Name:- {dish_name}\n'
             msg = msg + f'Ingredients:- {ingredients}\n'
             print(msg)
             model = genai.GenerativeModel(model_name='gemini-1.0-pro-latest')
             chat = model.start_chat(history=[])
-            instructions = chat.send_message(prompt+"\n"+msg)
-            instructions_list = instructions.text.split('\n')
-            print(instructions.text)
-            chat.send_message("From now I will pas each instruction. Generate the task tree following the JSON format I specified. Strictly send task tree as json response. No other information.")
+            while(True):
+                try:
+                    instructions = chat.send_message(prompt+"\n"+msg+"\n Strictly Give only instructions as response each seperated in new line.")
+                    instructions_list = instructions.text.split('\n')
+                    print(instructions.text)
+                    chat.send_message("From now I will pas each instruction. Generate the task tree following the JSON format I specified. Strictly send task tree as json response. No other information.")
+                    break
+                except Exception as e:
+                    print("Got an exception. Retrying the request.")
+                    pass
             counter = 0
             for instruction_index in range(len(instructions_list)):
                 if(counter%10==0): #call sleep on current thread to not make it a bottleneck for API calls.
-                    time.sleep(2)
+                    time.sleep(30)
                 if (len(instructions_list[instruction_index]) != 0):
                     if (instruction_index == len(instructions_list) - 1):
                         instruction = "lastInstruction: " + "dish: " + dish_name + " " + instructions_list[instruction_index]
                     else:
                         instruction = "Instruction: "+instructions_list[instruction_index]
                     print(instruction+" <-- instruction")
-                    response = chat.send_message(instruction)
+                    retry_count = 0
+                    while(retry_count<10):
+                        try:
+                            response = chat.send_message(instruction)
+                            break
+                        except Exception as e:
+                            print("exception retyring!!")
+                            print(e)
+                            retry_count+=1
+                            time.sleep(20)
                     counter+=1
-                    print(response.text)
+                    data1 = response.text
+                    try:
+                        sIndex = data1.index('[')
+                        pIndex = data1.index('{')
+                        jsonData = ""
+                        if(sIndex!=-1 and (sIndex<pIndex)):
+                            jsonData = data1[sIndex, data1.rfind(']')+1]
+                        else:
+                            jsonData = data1[data1.index('{'): data1.rfind('}')+1]
+                            tree.append(json.loads(jsonData))
+                    except Exception as e:
+                        print(e)
+                        print(jsonData)
+                        print(data1)
+            file_path = f"{dish_name.replace(' ', '_')}.json"
+
+            # Write JSON list to a JSON file
+            with open(file_path, "w") as json_file:
+                json.dump(tree, json_file, indent=4)
 
 if __name__ == "__main__":
     prompt = read_file_as_string("prompt.txt")
