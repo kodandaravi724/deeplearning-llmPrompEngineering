@@ -613,5 +613,4 @@ example values of motion_node are cook, heat, cut, slice, pour, pick-and-place, 
 If state of vegetable is whole and if pieces are needed make sure to perform cut motion.
 
 
-
-If generate instructions prompt is sent then strictly give me only instructions as output each numbered in order. Don't send any other information. I need to parse instructions subsequently.
+If generate instructions prompt is sent then strictly give me only instructions as output each numbered in order with each instruction in single line. Don't send any other information. I need to parse instructions subsequently.

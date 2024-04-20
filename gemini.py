@@ -29,6 +29,11 @@ def detect_object(model, filepath):
 
 
 def sendInstructions(data, prompt):
+    with open("kitchen.txt", "r") as file:
+        lines = file.readlines()
+
+    kitchen_list = [line.strip() for line in lines]
+
     for i in range(len(data)):
         k = data[i]['menu']
         for j in range(len(k)):
@@ -44,7 +49,9 @@ def sendInstructions(data, prompt):
             chat = model.start_chat(history=[])
             while(True):
                 try:
-                    instructions = chat.send_message(prompt+"\n"+msg+"\n Strictly Give only instructions as response each seperated in new line.")
+                    # errMsg = f"Items in Kitchen:- {','.join(kitchen_list)}. Use these items when generating instructions and task tree. If it is not possible to prepare dish with avaialable items in kitchen then give response Dish can't be prepared with the items in kitchen."
+                    instructions = chat.send_message(prompt+"\n"+msg+"\n Strictly Give only instructions as response each seperated in new line.\n")
+                    print(instructions.text)
                     instructions_list = instructions.text.split('\n')
                     print(instructions.text)
                     chat.send_message("From now I will pas each instruction. Generate the task tree following the JSON format I specified. Strictly send task tree as json response. No other information.")
