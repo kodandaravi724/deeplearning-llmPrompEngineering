@@ -551,9 +551,15 @@ Task Tree:-
 
 Steps to generate task tree:-
 
-Generate instructions to prepare dish.
+Generate instructions to prepare dish from the items available in kitchen.
 
-Based on the instructions generate task tree to prepare dish.
+Kitchen items are provided in format:- kitchen_items: [item1, item2, item3]
+
+If it is not possible to prepare the dish from items in kitchen then give the response "Dish can't be prepared with available items."
+
+if it is possible to prepare the dish with items in kitchen then follow below steps.
+
+Based on the instructions generated to prepare the dish generate task tree to prepare dish.
 
 
 When generating task tree consider the state of ingredient like if it's a whole and if needed to make pieces use cutting board. If state is not given consider it as whole.

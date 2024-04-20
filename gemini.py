@@ -37,7 +37,7 @@ def sendInstructions(data, prompt):
     for i in range(len(data)):
         k = data[i]['menu']
         for j in range(len(k)):
-            time.sleep(40)
+            time.sleep(60)
             msg = ""
             dish_name = k[j]['dish']
             ingredients = k[j]['ingredients']
@@ -49,20 +49,21 @@ def sendInstructions(data, prompt):
             chat = model.start_chat(history=[])
             while(True):
                 try:
-                    # errMsg = f"Items in Kitchen:- {','.join(kitchen_list)}. Use these items when generating instructions and task tree. If it is not possible to prepare dish with avaialable items in kitchen then give response Dish can't be prepared with the items in kitchen."
-                    instructions = chat.send_message(prompt+"\n"+msg+"\n Strictly Give only instructions as response each seperated in new line.\n")
+                    errMsg = f"kitchen_items: {','.join(kitchen_list)}. Use these items when generating instructions and task tree. If it is not possible to prepare dish with avaialable items in kitchen then give response Dish can\'t be prepared with available items."
+                    instructions = chat.send_message(prompt+"\n"+msg+"\n Strictly Give only instructions as response each seperated in new line.\n"+errMsg)
                     print(instructions.text)
                     instructions_list = instructions.text.split('\n')
                     print(instructions.text)
-                    chat.send_message("From now I will pas each instruction. Generate the task tree following the JSON format I specified. Strictly send task tree as json response. No other information.")
+                    chat.send_message("From now I will pas each instruction. Generate the task tree following the JSON format I specified. Strictly send only task tree as json response. No other information.")
                     break
                 except Exception as e:
                     print("Got an exception. Retrying the request.")
+                    time.sleep(60)
                     pass
             counter = 0
             for instruction_index in range(len(instructions_list)):
                 if(counter%10==0): #call sleep on current thread to not make it a bottleneck for API calls.
-                    time.sleep(30)
+                    time.sleep(60)
                 if (len(instructions_list[instruction_index]) != 0):
                     if (instruction_index == len(instructions_list) - 1):
                         instruction = "lastInstruction: " + "dish: " + dish_name + " " + instructions_list[instruction_index]
