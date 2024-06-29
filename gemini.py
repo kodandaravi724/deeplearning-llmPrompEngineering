@@ -2,10 +2,15 @@ import os
 import PIL
 import google.generativeai as genai
 import google.ai.generativelanguage as glm
+from dotenv import load_dotenv
+import os
 import time
 
+
+load_dotenv()
+
 # do not reveal your api key when submitting the assignment
-GOOGLE_API_KEY = "AIzaSyDSrs_QCfYIwV_JpJE0duppfCOALai96Sw"
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
 
 
